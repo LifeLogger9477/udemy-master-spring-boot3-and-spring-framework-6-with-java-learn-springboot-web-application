@@ -26,15 +26,23 @@ public class SayHelloController {
   public String sayHelloHtmml() {
 
     StringBuffer sb = new StringBuffer();
-    sb.append("<html>");
-    sb.append("<head>");
-    sb.append("<title>My first HTML Page</title>");
-    sb.append("</head>");
-    sb.append("<body>");
-    sb.append("My first html page with body");
-    sb.append("</body>");
-    sb.append("</html>");
+    sb.append( "<html>" );
+    sb.append( "<head>" );
+    sb.append( "<title>My first HTML Page</title>" );
+    sb.append( "</head>" );
+    sb.append( "<body>" );
+    sb.append( "My first html page with body" );
+    sb.append( "</body>" );
+    sb.append( "</html>" );
 
     return sb.toString();
+  }
+
+  // "say-hello-jsp" => sayHello.jsp
+  // /src/main/resources/META-INF/resources/WEB-INF/jsp/sayHello.jsp
+  @RequestMapping (value = "/say-hello-jsp")
+  public String sayHelloJsp() {
+
+    return "sayHello";
   }
 }

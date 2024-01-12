@@ -22,6 +22,12 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
+  
+    <!-- Step 05: jsp 사용을 위해서 설정 -->
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-jasper</artifactId>
+    </dependency>
     
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -29,6 +35,7 @@
       <scope>runtime</scope>
       <optional>true</optional>
     </dependency>
+    
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
