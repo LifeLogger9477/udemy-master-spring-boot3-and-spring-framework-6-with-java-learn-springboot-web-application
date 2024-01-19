@@ -4,16 +4,9 @@
     </head>
     <body>
         <div>
-            Welcome to the in28minutes
+            Welcome ${name}
         </div>
-        <div>
-            Your Name: ${name}
-        </div>
-    <%--
-        <div>
-            Your Password: ${password}
-        </div>
-    --%>
+        <hr>
         <div>
             <a href="list-todos">Manage</a> your todos
         </div>
