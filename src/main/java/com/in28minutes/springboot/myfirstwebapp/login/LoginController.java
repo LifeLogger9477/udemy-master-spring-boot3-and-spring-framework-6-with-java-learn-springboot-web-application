@@ -13,6 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 
+  private AuthenticationService authenticationService;
+
+  public LoginController(AuthenticationService authenticationService) {
+
+    this.authenticationService = authenticationService;
+  }
+
   // login
   @RequestMapping (value = "/login", method = RequestMethod.GET)
   public String gotoLoginPage() {
@@ -28,9 +35,22 @@ public class LoginController {
       ModelMap model
   ) {
 
-    model.put( "name", name );
-    model.put( "password", password );
+    if (authenticationService.authenticate( name, password )) {
 
-    return "welcome";
+      model.put( "name", name );
+      model.put( "password", password );
+
+      // 단일 책임 준수
+
+      // Authentication
+      // name - in28minutes
+      // password - dummy
+
+      return "welcome";
+    }
+
+    model.put( "errorMessage", "Invalid Credentials! Please try again." );
+
+    return "login";
   }
 }
