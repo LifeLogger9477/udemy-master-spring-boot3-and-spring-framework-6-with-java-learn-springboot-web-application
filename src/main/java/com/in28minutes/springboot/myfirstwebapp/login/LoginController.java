@@ -5,12 +5,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
  * author : ms.Lee
  * date   : 2024-01-12
  */
 @Controller
+@SessionAttributes("name")    // -> 사용하려는 컨트롤러에 다 써야 한다.
 public class LoginController {
 
   private AuthenticationService authenticationService;
@@ -38,7 +40,7 @@ public class LoginController {
     if (authenticationService.authenticate( name, password )) {
 
       model.put( "name", name );
-      model.put( "password", password );
+      // model.put( "password", password );
 
       // 단일 책임 준수
 
