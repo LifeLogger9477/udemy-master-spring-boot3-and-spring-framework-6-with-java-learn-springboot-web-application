@@ -1,15 +1,19 @@
 package com.in28minutes.springboot.myfirstwebapp.todo;
 
+import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * author : ms.Lee
  * date   : 2024-01-19
  */
+@Service
 public class TodoService {
 
-  private static List<Todo> todos;
+  private static List<Todo> todos = new ArrayList<>();
   static {
 
     todos.add(
