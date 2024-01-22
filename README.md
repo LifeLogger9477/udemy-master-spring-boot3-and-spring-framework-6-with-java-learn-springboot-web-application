@@ -27,3 +27,14 @@ Snippets
 최신 버전으로 변경
 5.1.3 -> 5.3.2
 3.6.0 -> 3.7.1
+
+## 113. Step 22 - Adding Validation using  Spring Boot Starter Validation
+### validations with Spring Boot
+1. Spring Boot Starter Validation
+    - pom.xml
+2. Command Bean (Form Backing Object)
+    - 2-way binding (todo.jsp & TodoController.java)
+3. Add Validations to Bean
+    - Todo.java
+4. Display Validation Errors in the View
+    - todo.jsp
