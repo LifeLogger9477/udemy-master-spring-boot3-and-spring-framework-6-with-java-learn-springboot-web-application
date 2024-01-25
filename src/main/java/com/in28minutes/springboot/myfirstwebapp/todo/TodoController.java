@@ -69,7 +69,7 @@ public class TodoController {
     todoService.addTodo(
         username,
         todo.getDescription(),
-        LocalDate.now().plusYears( 1 ),
+        todo.getTargetDate(),
         false
     );
 
