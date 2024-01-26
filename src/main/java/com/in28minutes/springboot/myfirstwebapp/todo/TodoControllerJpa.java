@@ -22,17 +22,11 @@ import java.util.List;
 @SessionAttributes ("name")
 public class TodoControllerJpa {
 
-  private TodoService todoService;
-
   private TodoRepository todoRepository;
 
 
-  public TodoControllerJpa(
-      TodoService todoService,
-      TodoRepository todoRepository
-  ) {
+  public TodoControllerJpa(TodoRepository todoRepository) {
 
-    this.todoService = todoService;
     this.todoRepository = todoRepository;
   }
 
@@ -64,7 +58,7 @@ public class TodoControllerJpa {
   }
 
   @RequestMapping (value = "/add-todo", method = RequestMethod.POST)
-  public String addNewTodoPage(
+  public String addNewTodo(
       ModelMap model,
       @Valid Todo todo,
       BindingResult result
@@ -76,12 +70,18 @@ public class TodoControllerJpa {
     }
 
     String username = getLoggedinUsername( model );
+
+    todo.setUsername( username );
+    todoRepository.save( todo );
+
+    /*
     todoService.addTodo(
         username,
         todo.getDescription(),
         todo.getTargetDate(),
-        false
+        todo.isDone()
     );
+    */
 
     return "redirect:list-todos";
   }
@@ -90,7 +90,8 @@ public class TodoControllerJpa {
   public String deleteTodo(@RequestParam int id) {
 
     // Delete todo
-    todoService.deleteById( id );
+    todoRepository.deleteById( id );
+    // todoService.deleteById( id );
 
     return "redirect:list-todos";
   }
@@ -98,7 +99,8 @@ public class TodoControllerJpa {
   @RequestMapping (value = "/update-todo", method = RequestMethod.GET)
   public String ShowUpdateTodoPage(@RequestParam int id, ModelMap model) {
 
-    Todo todo = todoService.findById( id );
+    //Todo todo = todoService.findById( id );
+    Todo todo = todoRepository.findById( id ).get();
     model.addAttribute( "todo", todo );
 
     return "todo";
@@ -118,7 +120,8 @@ public class TodoControllerJpa {
 
     String username = getLoggedinUsername( model );
     todo.setUsername( username );
-    todoService.updateTodo( todo );
+    todoRepository.save( todo );
+    // todoService.updateTodo( todo );
 
     return "redirect:list-todos";
   }
