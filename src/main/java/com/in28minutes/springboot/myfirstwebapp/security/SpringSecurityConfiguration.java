@@ -73,19 +73,35 @@ public class SpringSecurityConfiguration {
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
     http.authorizeHttpRequests(
-        auth -> auth.anyRequest().authenticated()
-    );
+            auth -> auth.anyRequest().authenticated()
+        )
 
-    http.formLogin( withDefaults());
+        .formLogin( withDefaults() )
 
-    http.csrf( AbstractHttpConfigurer::disable );
-    http.headers(
-        headersConfigurer ->
-            headersConfigurer.frameOptions(
-                HeadersConfigurer.FrameOptionsConfig::disable
-            )
-    );
+        .csrf( AbstractHttpConfigurer::disable )
+
+        .headers(
+            headersConfigurer ->
+                headersConfigurer.frameOptions(
+                    HeadersConfigurer.FrameOptionsConfig::disable
+                )
+        );
 
     return http.build();
   }
+
+  /**
+   * 정적 리소스 spring security 대상에서 제외
+   * 참고 : https://velog.io/@kide77/Spring-Boot-3.x-Security-%EA%B8%B0%EB%B3%B8-%EC%84%A4%EC%A0%95-%EB%B0%8F-%EB%B3%80%ED%99%94
+  @Bean
+  public WebSecurityCustomizer webSecurityCustomizer() {
+
+    return web ->
+        web
+            .ignoring()
+            .requestMatchers(
+                PathRequest.toStaticResources().atCommonLocations()
+            );
+  }
+  */
 }
