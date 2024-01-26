@@ -25,7 +25,7 @@ public class TodoService {
         new Todo(
             ++todosCount,
             "in28minutes",
-            "Learn AWS",
+            "Learn AWS 1",
             LocalDate.now().plusYears( 1 ),
             false
         )
@@ -34,7 +34,7 @@ public class TodoService {
         new Todo(
             ++todosCount,
             "in28minutes",
-            "Learn DevOps",
+            "Learn DevOps 1",
             LocalDate.now().plusYears( 2 ),
             false
         )
@@ -43,7 +43,7 @@ public class TodoService {
         new Todo(
             ++todosCount,
             "in28minutes",
-            "Learn Full Stack Development",
+            "Learn Full Stack Development 1",
             LocalDate.now().plusYears( 3 ),
             false
         )
